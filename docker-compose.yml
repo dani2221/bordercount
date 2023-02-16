@@ -1,0 +1,50 @@
+version: '3'
+services:
+  api:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: dann132/api:latest
+    ports:
+      - 80:80
+    restart: always
+
+  yolo:
+    build: ./yolo_detector
+    command: python script.py
+    container_name: yolo
+    ports:
+      - 5001:5001
+    restart: always
+
+  script0:
+    build: ./image_processing
+    command: python count.py 0
+    container_name: script0
+    restart: always
+
+  script1:
+    build: ./image_processing
+    command: python count.py 1
+    container_name: script1
+    restart: always
+
+  script2:
+    build: ./image_processing
+    command: python count.py 2
+    container_name: script2
+    restart: always
+
+  script3:
+    build: ./image_processing
+    command: python count.py 3
+    container_name: script3
+    restart: always
+
+  script4:
+    build: ./image_processing
+    command: python count.py 4
+    container_name: script4
+    restart: always
+
